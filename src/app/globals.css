@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 1) transparent;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+.fuente {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
