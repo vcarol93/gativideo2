@@ -1,133 +1,129 @@
 "use client";
 
-import { useState } from "react";
+import dynamic from "next/dynamic";
 
-export default function Home(): JSX.Element {
-  const canales = [
-    {
-      nombre: "Telefe",
-      url: "https://tvlibree.com/html/fl/?get=VGVsZWZlSEQ=",
-      descripcion:
-        "Canal generalista con programas en vivo, noticias y entretenimiento.",
-    },
-    {
-      nombre: "El Trece",
-      url: "https://tvlibree.com/html/fl/?get=QXJ0ZWFySEQ",
-      descripcion:
-        "El Trece TV Argentina, shows, noticieros y programación familiar.",
-    },
-    {
-      nombre: "Flow Music",
-      url: "https://tvlibree.com/html/fl/?get=Rmxvd19NdXNpY19YUA==",
-      descripcion: "Canal musical en vivo con videos y conciertos.",
-    },
-    {
-      nombre: "Fox Sports 1",
-      url: "https://tvlibree.com/html/fl/?get=Rm94U3BvcnRz",
-      descripcion: "Eventos deportivos, fútbol, Fórmula 1 y más.",
-    },
-  ];
+// Importamos el componente cliente sin SSR
+const Home = dynamic(() => import("../components/HomeClient"), { ssr: false });
 
-  // 🔍 Detectamos si es mobile al cargar la página
-  const isClient = typeof window !== "undefined";
-  const isMobileCheck = isClient
-    ? /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)
-    : false;
-
-  const [isMobile] = useState(isMobileCheck);
-  const [iframeUrl, setIframeUrl] = useState(canales[0].url);
-
-  const handleClick = (canal: (typeof canales)[0]) => {
-    if (isMobile) {
-      // En mobile, abrir en nueva pestaña
-      window.open(canal.url, "_blank");
-    } else {
-      // En desktop, mostrar en el iframe
-      setIframeUrl(canal.url);
-    }
-  };
-
-  return (
-    <div className="max-w-screen overflow-x-hidden">
-      <div className="mx-auto px-4 md:max-w-3xl">
-        <main className="border-x border-[#1b1718] flex min-h-screen w-full max-w-3xl flex-col items-start justify-around py-32 px-6 ">
-          <h1 className="text-3xl font-semibold pb-3 fuente">Rativideo</h1>
-          <p className="text-lg text-[#9f9fa9]">
-            Canales en vivo. <br />
-            Modo prueba, <span className="text-zinc-800">puede fallar</span>, no
-            pidas mucho que es gratis 😄
-          </p>
-
-          <div className="relative flex h-4 w-full  before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-black)]/5 dark:before:[--pattern-foreground:var(--color-white)]/5"></div>
-
-          {/* 📱 Vista MOBILE */}
-          {isMobile && (
-            <div className="mt-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
-              {canales.map((canal) => (
-                <div
-                  key={canal.nombre}
-                  className="flex flex-col justify-between rounded-xl border border-zinc-300 bg-zinc-50 p-4 shadow-sm dark:bg-zinc-900 dark:border-zinc-800"
-                >
-                  <div>
-                    <h2 className="text-lg font-semibold text-black dark:text-white">
-                      {canal.nombre}
-                    </h2>
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-                      {canal.descripcion}
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => handleClick(canal)}
-                    className="mt-3 w-full rounded-full bg-neutral-800 px-5 py-2 text-white hover:bg-[#383838] dark:hover:bg-[#ccc] dark:text-black"
-                  >
-                    Ver canal 📺
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* 💻 Vista DESKTOP */}
-          {!isMobile && (
-            <div>
-              <div className="mt-6 w-full relative pb-[56.25%]">
-                <iframe
-                  id="iframe"
-                  src={iframeUrl}
-                  className="absolute top-0 left-0 w-full h-full rounded shadow-lg"
-                  frameBorder={0}
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-presentation"
-                  title="Live Video"
-                />
-              </div>
-
-              <div className="flex flex-col gap-4 text-base font-medium sm:flex-row mt-4 w-full sm:justify-center">
-                {canales.map((canal) => (
-                  <button
-                    key={canal.nombre}
-                    onClick={() => handleClick(canal)}
-                    className="flex h-12 w-full sm:w-[158px] items-center justify-center gap-2 rounded-full bg-neutral-800 text-white transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc]"
-                  >
-                    {canal.nombre}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {isMobile && (
-            <p className="mt-4 text-sm text-zinc-500 text-center">
-              En móvil, los canales se abren en otra pestaña para mejor
-              compatibilidad 📱
-            </p>
-          )}
-        </main>
-      </div>
-    </div>
-  );
+export default function Page() {
+  return <Home />;
 }
+
+// "use client";
+
+// import { useState, useEffect } from "react";
+
+// export default function Home() {
+//   const canales = [
+//     {
+//       nombre: "Telefe",
+//       url: "https://tvlibree.com/html/fl/?get=VGVsZWZlSEQ=",
+//       descripcion:
+//         "Canal generalista con programas en vivo, noticias y entretenimiento.",
+//     },
+//     {
+//       nombre: "El Trece",
+//       url: "https://tvlibree.com/html/fl/?get=QXJ0ZWFySEQ",
+//       descripcion:
+//         "El Trece TV Argentina, shows, noticieros y programación familiar.",
+//     },
+//     {
+//       nombre: "Flow Music",
+//       url: "https://tvlibree.com/html/fl/?get=Rmxvd19NdXNpY19YUA==",
+//       descripcion: "Canal musical en vivo con videos y conciertos.",
+//     },
+//     {
+//       nombre: "Fox Sports 1",
+//       url: "https://tvlibree.com/html/fl/?get=Rm94U3BvcnRz",
+//       descripcion: "Eventos deportivos, fútbol, Fórmula 1 y más.",
+//     },
+//   ];
+
+//   const [isMobile, setIsMobile] = useState(false);
+//   const [iframeUrl, setIframeUrl] = useState(canales[0].url);
+
+//   useEffect(() => {
+//     const check = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+//     setIsMobile(check);
+//   }, []);
+
+//   const handleClick = (canal: (typeof canales)[0]) => {
+//     if (isMobile) {
+//       window.open(canal.url, "_blank");
+//     } else {
+//       setIframeUrl(canal.url);
+//     }
+//   };
+
+//   return (
+//     <div className="max-w-screen overflow-x-hidden">
+//       <div className="mx-auto px-4 md:max-w-3xl">
+//         <main className="border-x border-[#1b1718] flex min-h-screen w-full max-w-3xl flex-col items-start justify-around py-32 px-6 ">
+//           <h1 className="text-3xl font-semibold pb-3 fuente">Rativideo</h1>
+//           <p className="text-lg text-[#9f9fa9]">
+//             Canales en vivo. <br />
+//             Modo prueba, <span className="text-zinc-800">puede fallar</span>, no
+//             pidas mucho que es gratis 😄
+//           </p>
+
+//           {/* 📱 Vista MOBILE */}
+//           {isMobile ? (
+//             <div className="mt-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
+//               {canales.map((canal) => (
+//                 <div
+//                   key={canal.nombre}
+//                   className="flex flex-col justify-between rounded-xl border border-zinc-300 bg-zinc-50 p-4 shadow-sm dark:bg-zinc-900 dark:border-zinc-800"
+//                 >
+//                   <div>
+//                     <h2 className="text-lg font-semibold text-black dark:text-white">
+//                       {canal.nombre}
+//                     </h2>
+//                     <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+//                       {canal.descripcion}
+//                     </p>
+//                   </div>
+//                   <button
+//                     onClick={() => handleClick(canal)}
+//                     className="mt-3 w-full rounded-full bg-neutral-800 px-5 py-2 text-white hover:bg-[#383838] dark:hover:bg-[#ccc] dark:text-black"
+//                   >
+//                     Ver canal 📺
+//                   </button>
+//                 </div>
+//               ))}
+//             </div>
+//           ) : (
+//             <div>
+//               <div className="mt-6 w-full relative pb-[56.25%]">
+//                 <iframe
+//                   id="iframe"
+//                   src={iframeUrl}
+//                   className="absolute top-0 left-0 w-full h-full rounded shadow-lg"
+//                   frameBorder={0}
+//                   allow="autoplay; encrypted-media; picture-in-picture"
+//                   allowFullScreen
+//                   sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-presentation"
+//                   title="Live Video"
+//                 />
+//               </div>
+
+//               <div className="flex flex-col gap-4 text-base font-medium sm:flex-row mt-4 w-full sm:justify-center">
+//                 {canales.map((canal) => (
+//                   <button
+//                     key={canal.nombre}
+//                     onClick={() => handleClick(canal)}
+//                     className="flex h-12 w-full sm:w-[158px] items-center justify-center gap-2 rounded-full bg-neutral-800 text-white transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc]"
+//                   >
+//                     {canal.nombre}
+//                   </button>
+//                 ))}
+//               </div>
+//             </div>
+//           )}
+//         </main>
+//       </div>
+//     </div>
+//   );
+// }
 
 // "use client";
 
