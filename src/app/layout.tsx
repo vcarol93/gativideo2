@@ -9,8 +9,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gativideo en vivo",
-  description: "Demo de Gativideo",
+  title: "Rativideo",
+  description: "Canales (algunos) en vivo",
 };
 
 export default function RootLayout({
