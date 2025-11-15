@@ -7,8 +7,5 @@
 
 body {
   overscroll-behavior: none;
-}
-
-.fuente {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: var(--font-jetbrains-mono), monospace;
 }
