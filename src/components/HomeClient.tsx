@@ -232,7 +232,7 @@ export default function HomeClient() {
               ))}
             </div>
           ) : (
-            <div className="w-full">
+            <div className="flex flex-col h-screen w-full">
               <div className="my-6 w-full aspect-video">
                 <iframe
                   id="iframe"
@@ -249,7 +249,7 @@ export default function HomeClient() {
               <div className="relative flex h-4 w-full  border-grid before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-black)]/5 dark:before:[--pattern-foreground:var(--color-white)]/5"></div>
 
               {/***CANALES */}
-              <div className="mt-8 ">
+              <div className="mt-8 flex-1 overflow-y-auto ">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {canales.map((canal) => (
                     <div
@@ -286,7 +286,7 @@ export default function HomeClient() {
           )}
         </main>
       </div>
-      <ToTopButton />
+      {/* <ToTopButton /> */}
     </div>
   );
 }

@@ -14,6 +14,9 @@ export default function ToTopButton() {
 
   useEffect(() => {
     window.addEventListener("scroll", handleVisibilityChange);
+    return () => {
+      window.removeEventListener("scroll", handleVisibilityChange);
+    };
   }, []);
 
   const clickHandler = () => {
