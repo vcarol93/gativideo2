@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import ToTopButton from "./ToTopButton";
 
 export default function HomeClient() {
   const canales = [
@@ -192,7 +193,7 @@ export default function HomeClient() {
   return (
     <div className="max-w-screen overflow-x-hidden">
       <div className="mx-auto px-4 md:max-w-3xl">
-        <main className="border-x border-[#1b1718] flex min-h-screen w-full max-w-3xl flex-col items-start justify-around py-32 px-6 ">
+        <main className="border-x border-[#1b1718] flex min-h-screen w-full max-w-3xl flex-col items-start justify-around pt-12 px-6 ">
           <h1 className="text-3xl md:text-5xl font-semibold pb-3 fuente">
             🐭 Rativideo
           </h1>
@@ -247,7 +248,8 @@ export default function HomeClient() {
 
               <div className="relative flex h-4 w-full  border-grid before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-black)]/5 dark:before:[--pattern-foreground:var(--color-white)]/5"></div>
 
-              <div className="mt-8">
+              {/***CANALES */}
+              <div className="mt-8 ">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {canales.map((canal) => (
                     <div
@@ -284,6 +286,7 @@ export default function HomeClient() {
           )}
         </main>
       </div>
+      <ToTopButton />
     </div>
   );
 }
