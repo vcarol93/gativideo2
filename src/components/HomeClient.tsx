@@ -173,6 +173,7 @@ export default function HomeClient() {
 
   const [isMobile, setIsMobile] = useState(false);
   const [iframeUrl, setIframeUrl] = useState(canales[0].url);
+  const [selectedCanal, setSelectedCanal] = useState(canales[0]);
 
   useEffect(() => {
     // Detectamos por ancho de pantalla
@@ -183,6 +184,8 @@ export default function HomeClient() {
   }, []);
 
   const handleClick = (canal: (typeof canales)[0]) => {
+    setSelectedCanal(canal);
+
     if (isMobile) {
       window.open(canal.url, "_blank", "noopener,noreferrer");
     } else {
@@ -201,7 +204,7 @@ export default function HomeClient() {
           <p className="my-4 text-lg text-[#9f9fa9]">
             Canales en vivo. <br />
             Si algo no carga, paciencia… ¡a veces la tele también se toma mate!
-            😄
+            🧉😄
           </p>
           <div className="relative flex h-4 w-full before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,rgba(161,161,170,0.1)_0,rgba(161,161,170,0.1)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px]"></div>
 
@@ -248,13 +251,19 @@ export default function HomeClient() {
 
               <div className="relative flex h-4 w-full  border-grid before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-black)]/5 dark:before:[--pattern-foreground:var(--color-white)]/5"></div>
 
-              {/***CANALES */}
+              {/***CANALES Desktop*/}
               <div className="my-8 flex-1 overflow-y-auto ">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {canales.map((canal) => (
                     <div
                       key={canal.nombre}
-                      className="flex flex-col justify-between rounded-xl border border-neutral-800 p-4 shadow-sm "
+                      className={`flex flex-col justify-between rounded-xl border p-4 shadow-sm transition
+    ${
+      selectedCanal.nombre === canal.nombre
+        ? "bg-neutral-800 border-neutral-600"
+        : "border-neutral-800 hover:bg-neutral-900"
+    }
+  `}
                     >
                       <div>
                         <h2 className="text-lg font-semibold text-[#9f9fa9]">
@@ -267,9 +276,17 @@ export default function HomeClient() {
                       <button
                         aria-label={`Ver canal ${canal.nombre}`}
                         onClick={() => handleClick(canal)}
-                        className="cursor-pointer mt-3 w-full rounded-full bg-neutral-800 px-5 py-2 hover:bg-white hover:text-black text-[#9f9fa9]"
+                        className={`cursor-pointer mt-3 w-full rounded-full px-5 py-2 transition
+    ${
+      selectedCanal.nombre === canal.nombre
+        ? "bg-white text-black"
+        : "bg-neutral-800 text-[#9f9fa9] hover:bg-white hover:text-black"
+    }
+  `}
                       >
-                        Ver canal 📺
+                        {selectedCanal.nombre === canal.nombre
+                          ? "En vivo 🔴"
+                          : "Ver canal 📺"}
                       </button>
                     </div>
                   ))}
@@ -279,7 +296,7 @@ export default function HomeClient() {
           )}
 
           {isMobile && (
-            <p className="mt-4 text-sm text-zinc-500 text-center">
+            <p className="my-4 text-sm text-zinc-500 text-center">
               En móvil, los canales se abren en otra pestaña para mejor
               compatibilidad 📱
             </p>
