@@ -200,8 +200,8 @@ export default function HomeClient() {
           <div className="relative flex h-4 w-full before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,rgba(161,161,170,0.1)_0,rgba(161,161,170,0.1)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px]"></div>
           <p className="my-4 text-lg text-[#9f9fa9]">
             Canales en vivo. <br />
-            Modo prueba, <span className="text-zinc-700">puede fallar</span>, no
-            pidas mucho que es gratis 😄
+            Si algo no carga, paciencia… ¡a veces la tele también se toma mate!
+            😄
           </p>
           <div className="relative flex h-4 w-full before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,rgba(161,161,170,0.1)_0,rgba(161,161,170,0.1)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px]"></div>
 
@@ -249,7 +249,7 @@ export default function HomeClient() {
               <div className="relative flex h-4 w-full  border-grid before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-black)]/5 dark:before:[--pattern-foreground:var(--color-white)]/5"></div>
 
               {/***CANALES */}
-              <div className="mt-8 flex-1 overflow-y-auto ">
+              <div className="my-8 flex-1 overflow-y-auto ">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {canales.map((canal) => (
                     <div

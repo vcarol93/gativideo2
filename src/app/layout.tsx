@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
 // import Script from "next/script";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -31,6 +32,7 @@ export default function RootLayout({
           src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
           strategy="afterInteractive"
         /> */}
+        <Footer />
       </body>
     </html>
   );
