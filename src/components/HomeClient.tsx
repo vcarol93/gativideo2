@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import ToTopButton from "./ToTopButton";
+// import ToTopButton from "./ToTopButton";
 
 export default function HomeClient() {
   const canales = [
@@ -192,8 +192,8 @@ export default function HomeClient() {
 
   return (
     <div className="max-w-screen overflow-x-hidden">
-      <div className="mx-auto px-4 md:max-w-3xl">
-        <main className="border-x border-[#1b1718] flex min-h-screen w-full max-w-3xl flex-col items-start justify-around pt-12 px-6 ">
+      <div className="mx-auto px-4 flex justify-center">
+        <main className="border-x border-[#1b1718] flex min-h-screen w-full max-w-4xl flex-col items-start justify-around pt-12 px-6 ">
           <h1 className="text-3xl md:text-5xl font-semibold pb-3 fuente">
             🐭 Rativideo
           </h1>
