@@ -7,85 +7,85 @@ export default function HomeClient() {
   const canales = [
     {
       nombre: "Telefe",
-      url: "https://tvlibree.com/html/fl/?get=VGVsZWZlSEQ=",
+      url: "https://tvlibr3.com/html/fl/?get=VGVsZWZlSEQ=",
       descripcion:
         "Canal generalista con programas en vivo, noticias y entretenimiento.",
     },
     {
       nombre: "El Trece",
-      url: "https://tvlibree.com/html/fl/?get=QXJ0ZWFySEQ",
+      url: "https://tvlibr3.com/html/fl/?get=QXJ0ZWFySEQ",
       descripcion:
         "El Trece TV Argentina, shows, noticieros y programación familiar.",
     },
     {
       nombre: "El Nueve",
-      url: "https://tvlibree.com/html/fl/?get=Q2FuYWw5&lang=1",
+      url: "https://tvlibr3.com/html/fl/?get=Q2FuYWw5&lang=1",
       descripcion: "Canal de TV de Argentina. Noticias y actualidad.",
     },
     {
       nombre: "Telemax",
-      url: "https://tvlibree.com/html/fl/?get=VGVsZW1heA",
+      url: "https://tvlibr3.com/html/fl/?get=VGVsZW1heA",
       descripcion: "Es un canal del sistema de cable TeleCentro de Argentina ",
     },
     {
       nombre: "Antena 3",
-      url: "https://tvlibree.com/html/fl/?get=QW50ZW5hXzM=",
+      url: "https://tvlibr3.com/html/fl/?get=QW50ZW5hXzM=",
       descripcion: "Canal de televisión generalista español.",
     },
     {
       nombre: "Nat Geo",
-      url: "https://tvlibree.com/html/fl/?get=TmF0R2VvSEQ=",
+      url: "https://tvlibr3.com/html/fl/?get=TmF0R2VvSEQ=",
       descripcion:
         "Sobre exploración científica, historia, naturaleza y cultura, entre otros.",
     },
     {
       nombre: "Animal Planet",
-      url: "https://tvlibree.com/html/fl/?get=QW5pbWFsUGxhbmV0",
+      url: "https://tvlibr3.com/html/fl/?get=QW5pbWFsUGxhbmV0",
       descripcion: "Documentales de vida salvaje y naturaleza.",
     },
     {
       nombre: "Discovery Channel",
-      url: "https://tvlibree.com/html/fl/?get=RGlzY292ZXJ5SEQ=",
+      url: "https://tvlibr3.com/html/fl/?get=RGlzY292ZXJ5SEQ=",
       descripcion: "Documentales",
     },
     {
       nombre: "History Channel",
-      url: "https://tvlibree.com/html/fl/?get=SGlzdG9yeUhE",
+      url: "https://tvlibr3.com/html/fl/?get=SGlzdG9yeUhE",
       descripcion: "Documentales",
     },
     {
       nombre: "Cinecanal",
-      url: "https://tvlibree.com/html/fl/?get=Q2luZWNhbmFsSEQ=",
+      url: "https://tvlibr3.com/html/fl/?get=Q2luZWNhbmFsSEQ=",
       descripcion: "Peliculas de estreno y clásicos del cine.",
     },
     {
       nombre: "TNT",
-      url: "https://tvlibree.com/html/fl/?get=VE5UX0hEX0FyZw==",
+      url: "https://tvlibr3.com/html/fl/?get=VE5UX0hEX0FyZw==",
       descripcion: "Películas, series.",
     },
     {
       nombre: "Warner Channel",
-      url: "https://tvlibree.com/html/fl/?get=V2FybmVySEQ=",
+      url: "https://tvlibr3.com/html/fl/?get=V2FybmVySEQ=",
       descripcion: "Películas, series.",
     },
     {
       nombre: "Star Channel",
-      url: "https://tvlibree.com/html/fl/?get=Rk9YSEQ=",
+      url: "https://tvlibr3.com/html/fl/?get=Rk9YSEQ=",
       descripcion: "Películas, series.",
     },
     {
       nombre: "Studio Universal",
-      url: "https://tvlibree.com/html/fl/?get=U3R1ZGlvX1VuaXZlcnNhbA==",
+      url: "https://tvlibr3.com/html/fl/?get=U3R1ZGlvX1VuaXZlcnNhbA==",
       descripcion: "Películas, series.",
     },
     {
       nombre: "Sony Channel",
-      url: "https://tvlibree.com/html/fl/?get=U29ueUhE",
+      url: "https://tvlibr3.com/html/fl/?get=U29ueUhE",
       descripcion: "Películas, series.",
     },
     {
       nombre: "Paramount Network",
-      url: "https://tvlibree.com/html/fl/?get=UGFyYW1vdW50",
+      url: "https://tvlibr3.com/html/fl/?get=UGFyYW1vdW50",
       descripcion: "Películas, series.",
     },
     {
@@ -95,42 +95,42 @@ export default function HomeClient() {
     },
     {
       nombre: "HBO",
-      url: "https://tvlibree.com/html/fl/?get=SEJPSEQ=",
+      url: "https://tvlibr3.com/html/fl/?get=SEJPSEQ=",
       descripcion: "Películas, series.",
     },
     {
       nombre: "HBO 2",
-      url: "https://tvlibree.com/html/fl/?get=SEJPXzI=",
+      url: "https://tvlibr3.com/html/fl/?get=SEJPXzI=",
       descripcion: "Películas, series.",
     },
     {
       nombre: "HBO Plus",
-      url: "https://tvlibree.com/html/fl/?get=SEJPX1BsdXM=",
+      url: "https://tvlibr3.com/html/fl/?get=SEJPX1BsdXM=",
       descripcion: "Películas, series.",
     },
     {
       nombre: "Universal Cinema",
-      url: "https://tvlibree.com/html/fl/?get=VW5pdmVyc2FsX0NpbmVtYQ==",
+      url: "https://tvlibr3.com/html/fl/?get=VW5pdmVyc2FsX0NpbmVtYQ==",
       descripcion: "Películas, series.",
     },
     {
       nombre: "Cartoon Network",
-      url: "https://tvlibree.com/html/fl/?get=Q2FydG9vbk5ldHdvcms=",
+      url: "https://tvlibr3.com/html/fl/?get=Q2FydG9vbk5ldHdvcms=",
       descripcion: "Kids y familia.",
     },
     {
       nombre: "Nickelodeon",
-      url: "https://tvlibree.com/html/fl/?get=RGlzY292ZXJ5X0tpZHM=",
+      url: "https://tvlibr3.com/html/fl/?get=RGlzY292ZXJ5X0tpZHM=",
       descripcion: "Kids y familia.",
     },
     {
       nombre: "DreamWorks",
-      url: "https://tvlibree.com/html/fl/?get=RHJlYW13b3Jrcw==",
+      url: "https://tvlibr3.com/html/fl/?get=RHJlYW13b3Jrcw==",
       descripcion: "Kids y familia.",
     },
     {
       nombre: "Flow Music",
-      url: "https://tvlibree.com/html/fl/?get=Rmxvd19NdXNpY19YUA==",
+      url: "https://tvlibr3.com/html/fl/?get=Rmxvd19NdXNpY19YUA==",
       descripcion: "Canal musical en vivo con videos y conciertos.",
     },
     {
@@ -150,7 +150,7 @@ export default function HomeClient() {
     },
     {
       nombre: "ESPN 1",
-      url: "https://tvlibree.com/html/fl/?get=RVNQTjJIRA",
+      url: "https://tvlibr3.com/html/fl/?get=RVNQTjJIRA",
       descripcion: "Deportes en vivo",
     },
     {
