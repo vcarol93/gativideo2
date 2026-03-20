@@ -192,27 +192,27 @@ export default function HomeClient() {
       setIframeUrl(canal.url);
     }
   };
+
   return (
-    <div className="w-screen overflow-x-hidden">
-      <main className="flex min-h-screen w-full flex-col pt-12 px-12">
+    <div className="w-full overflow-x-hidden">
+      <main className="flex flex-col items-center min-h-screen w-full pt-12 px-4 md:px-6">
         <h1 className="text-3xl md:text-5xl font-semibold pb-3 fuente text-center">
           🐭 Rativideo
         </h1>
-        <div className="relative flex h-2 w-full my-2 before:absolute before:-left-[100vw] before:h-2 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,rgba(161,161,170,0.1)_0,rgba(161,161,170,0.1)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px]"></div>
+
         <p className="my-4 text-lg text-[#9f9fa9] text-center">
           Canales en vivo. <br />
           Si algo no carga, paciencia… ¡a veces la tele también se toma mate!
           🧉😄
         </p>
-        <div className="relative flex h-2 w-full mb-4 before:absolute before:-left-[100vw] before:h-2 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,rgba(161,161,170,0.1)_0,rgba(161,161,170,0.1)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px]"></div>
 
-        {/* Video Desktop */}
+        {/* 📱 Video Desktop / Mobile */}
         {!isMobile && (
-          <div className="w-full aspect-video mb-6">
+          <div className="w-full max-w-6xl aspect-video rounded shadow-lg overflow-hidden my-6">
             <iframe
               id="iframe"
               src={iframeUrl}
-              className="w-full h-full rounded shadow-lg"
+              className="w-full h-full"
               frameBorder={0}
               allow="autoplay; encrypted-media; picture-in-picture"
               allowFullScreen
@@ -223,34 +223,34 @@ export default function HomeClient() {
         )}
 
         {/* Lista de canales */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full mb-6">
+        <div className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-6">
           {canales.map((canal) => (
             <div
               key={canal.nombre}
-              className={`flex flex-col justify-between rounded-xl border p-3 shadow-sm transition
-            ${
-              selectedCanal.nombre === canal.nombre
-                ? "bg-neutral-800 border-neutral-600"
-                : "border-neutral-800 hover:bg-neutral-900"
-            }`}
+              className={`flex flex-col justify-between rounded-xl border p-4 shadow-sm transition
+              ${
+                selectedCanal.nombre === canal.nombre
+                  ? "bg-neutral-800 border-neutral-600"
+                  : "border-neutral-800 hover:bg-neutral-900"
+              }`}
             >
               <div>
-                <h2 className="text-md font-semibold text-[#9f9fa9]">
+                <h2 className="text-lg font-semibold text-[#9f9fa9]">
                   {canal.nombre}
                 </h2>
-                <p className="font-mono text-xs text-[oklch(0.552_0.016_285.938)] mt-1">
+                <p className="font-mono text-sm text-[oklch(0.552_0.016_285.938)] mt-1">
                   {canal.descripcion}
                 </p>
               </div>
               <button
                 aria-label={`Ver canal ${canal.nombre}`}
                 onClick={() => handleClick(canal)}
-                className={`cursor-pointer mt-2 w-full rounded-full px-3 py-2 text-sm transition
-              ${
-                selectedCanal.nombre === canal.nombre
-                  ? "bg-white text-black"
-                  : "bg-neutral-800 text-[#9f9fa9] hover:bg-white hover:text-black"
-              }`}
+                className={`cursor-pointer mt-3 w-full rounded-full px-5 py-2 transition
+                ${
+                  selectedCanal.nombre === canal.nombre
+                    ? "bg-white text-black"
+                    : "bg-neutral-800 text-[#9f9fa9] hover:bg-white hover:text-black"
+                }`}
               >
                 {selectedCanal.nombre === canal.nombre
                   ? "En vivo 🔴"
@@ -260,7 +260,6 @@ export default function HomeClient() {
           ))}
         </div>
 
-        {/* Mobile notice */}
         {isMobile && (
           <p className="my-4 text-sm text-zinc-500 text-center">
             En móvil, los canales se abren en otra pestaña para mejor
