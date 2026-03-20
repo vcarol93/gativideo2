@@ -192,118 +192,195 @@ export default function HomeClient() {
       setIframeUrl(canal.url);
     }
   };
-
   return (
-    <div className="max-w-screen overflow-x-hidden">
-      <div className="mx-auto px-4 flex justify-center">
-        <main className="border-x border-[#1b1718] flex min-h-screen w-full max-w-4xl flex-col items-start justify-around pt-12 px-6 ">
-          <h1 className="text-3xl md:text-5xl font-semibold pb-3 fuente">
-            🐭 Rativideo
-          </h1>
-          <div className="relative flex h-4 w-full before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,rgba(161,161,170,0.1)_0,rgba(161,161,170,0.1)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px]"></div>
-          <p className="my-4 text-lg text-[#9f9fa9]">
-            Canales en vivo. <br />
-            Si algo no carga, paciencia… ¡a veces la tele también se toma mate!
-            🧉😄
+    <div className="w-screen overflow-x-hidden">
+      <main className="flex min-h-screen w-full flex-col pt-12 px-12">
+        <h1 className="text-3xl md:text-5xl font-semibold pb-3 fuente text-center">
+          🐭 Rativideo
+        </h1>
+        <div className="relative flex h-2 w-full my-2 before:absolute before:-left-[100vw] before:h-2 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,rgba(161,161,170,0.1)_0,rgba(161,161,170,0.1)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px]"></div>
+        <p className="my-4 text-lg text-[#9f9fa9] text-center">
+          Canales en vivo. <br />
+          Si algo no carga, paciencia… ¡a veces la tele también se toma mate!
+          🧉😄
+        </p>
+        <div className="relative flex h-2 w-full mb-4 before:absolute before:-left-[100vw] before:h-2 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,rgba(161,161,170,0.1)_0,rgba(161,161,170,0.1)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px]"></div>
+
+        {/* Video Desktop */}
+        {!isMobile && (
+          <div className="w-full aspect-video mb-6">
+            <iframe
+              id="iframe"
+              src={iframeUrl}
+              className="w-full h-full rounded shadow-lg"
+              frameBorder={0}
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+              sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-presentation"
+              title="Live Video"
+            />
+          </div>
+        )}
+
+        {/* Lista de canales */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full mb-6">
+          {canales.map((canal) => (
+            <div
+              key={canal.nombre}
+              className={`flex flex-col justify-between rounded-xl border p-3 shadow-sm transition
+            ${
+              selectedCanal.nombre === canal.nombre
+                ? "bg-neutral-800 border-neutral-600"
+                : "border-neutral-800 hover:bg-neutral-900"
+            }`}
+            >
+              <div>
+                <h2 className="text-md font-semibold text-[#9f9fa9]">
+                  {canal.nombre}
+                </h2>
+                <p className="font-mono text-xs text-[oklch(0.552_0.016_285.938)] mt-1">
+                  {canal.descripcion}
+                </p>
+              </div>
+              <button
+                aria-label={`Ver canal ${canal.nombre}`}
+                onClick={() => handleClick(canal)}
+                className={`cursor-pointer mt-2 w-full rounded-full px-3 py-2 text-sm transition
+              ${
+                selectedCanal.nombre === canal.nombre
+                  ? "bg-white text-black"
+                  : "bg-neutral-800 text-[#9f9fa9] hover:bg-white hover:text-black"
+              }`}
+              >
+                {selectedCanal.nombre === canal.nombre
+                  ? "En vivo 🔴"
+                  : "Ver canal 📺"}
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile notice */}
+        {isMobile && (
+          <p className="my-4 text-sm text-zinc-500 text-center">
+            En móvil, los canales se abren en otra pestaña para mejor
+            compatibilidad 📱
           </p>
-          <div className="relative flex h-4 w-full before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,rgba(161,161,170,0.1)_0,rgba(161,161,170,0.1)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px]"></div>
-
-          {/* 📱 Vista MOBILE */}
-          {isMobile ? (
-            <div className="mt-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
-              {canales.map((canal) => (
-                <div
-                  key={canal.nombre}
-                  className="flex flex-col justify-between rounded-xl p-4 shadow-sm bg-zinc-900 "
-                >
-                  <div>
-                    <h2 className="text-lg font-semibold text-black dark:text-white">
-                      {canal.nombre}
-                    </h2>
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-                      {canal.descripcion}
-                    </p>
-                  </div>
-                  <button
-                    aria-label={`Ver canal ${canal.nombre}`}
-                    onClick={() => handleClick(canal)}
-                    className="mt-3 w-full rounded-full bg-neutral-800 px-5 py-2 text-white hover:bg-[#383838] "
-                  >
-                    Ver canal 📺
-                  </button>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="flex flex-col h-screen w-full">
-              <div className="my-6 w-full aspect-video">
-                <iframe
-                  id="iframe"
-                  src={iframeUrl}
-                  className=" w-full h-full rounded shadow-lg"
-                  frameBorder={0}
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-presentation"
-                  title="Live Video"
-                />
-              </div>
-
-              <div className="relative flex h-4 w-full  border-grid before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-black)]/5 dark:before:[--pattern-foreground:var(--color-white)]/5"></div>
-
-              {/***CANALES Desktop*/}
-              <div className="my-8 flex-1 overflow-y-auto ">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  {canales.map((canal) => (
-                    <div
-                      key={canal.nombre}
-                      className={`flex flex-col justify-between rounded-xl border p-4 shadow-sm transition
-    ${
-      selectedCanal.nombre === canal.nombre
-        ? "bg-neutral-800 border-neutral-600"
-        : "border-neutral-800 hover:bg-neutral-900"
-    }
-  `}
-                    >
-                      <div>
-                        <h2 className="text-lg font-semibold text-[#9f9fa9]">
-                          {canal.nombre}
-                        </h2>
-                        <p className="font-mono text-sm text-[oklch(0.552_0.016_285.938)] mt-1">
-                          {canal.descripcion}
-                        </p>
-                      </div>
-                      <button
-                        aria-label={`Ver canal ${canal.nombre}`}
-                        onClick={() => handleClick(canal)}
-                        className={`cursor-pointer mt-3 w-full rounded-full px-5 py-2 transition
-    ${
-      selectedCanal.nombre === canal.nombre
-        ? "bg-white text-black"
-        : "bg-neutral-800 text-[#9f9fa9] hover:bg-white hover:text-black"
-    }
-  `}
-                      >
-                        {selectedCanal.nombre === canal.nombre
-                          ? "En vivo 🔴"
-                          : "Ver canal 📺"}
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {isMobile && (
-            <p className="my-4 text-sm text-zinc-500 text-center">
-              En móvil, los canales se abren en otra pestaña para mejor
-              compatibilidad 📱
-            </p>
-          )}
-        </main>
-      </div>
-      {/* <ToTopButton /> */}
+        )}
+      </main>
     </div>
   );
+  // return (
+  //   <div className="max-w-screen overflow-x-hidden">
+  //     <div className="mx-auto px-4 flex justify-center">
+  //       <main className="border-x border-[#1b1718] flex min-h-screen w-full max-w-4xl flex-col items-start justify-around pt-12 px-6 ">
+  //         <h1 className="text-3xl md:text-5xl font-semibold pb-3 fuente">
+  //           🐭 Rativideo
+  //         </h1>
+  //         <div className="relative flex h-4 w-full before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,rgba(161,161,170,0.1)_0,rgba(161,161,170,0.1)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px]"></div>
+  //         <p className="my-4 text-lg text-[#9f9fa9]">
+  //           Canales en vivo. <br />
+  //           Si algo no carga, paciencia… ¡a veces la tele también se toma mate!
+  //           🧉😄
+  //         </p>
+  //         <div className="relative flex h-4 w-full before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,rgba(161,161,170,0.1)_0,rgba(161,161,170,0.1)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px]"></div>
+
+  //         {/* 📱 Vista MOBILE */}
+  //         {isMobile ? (
+  //           <div className="mt-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
+  //             {canales.map((canal) => (
+  //               <div
+  //                 key={canal.nombre}
+  //                 className="flex flex-col justify-between rounded-xl p-4 shadow-sm bg-zinc-900 "
+  //               >
+  //                 <div>
+  //                   <h2 className="text-lg font-semibold text-black dark:text-white">
+  //                     {canal.nombre}
+  //                   </h2>
+  //                   <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+  //                     {canal.descripcion}
+  //                   </p>
+  //                 </div>
+  //                 <button
+  //                   aria-label={`Ver canal ${canal.nombre}`}
+  //                   onClick={() => handleClick(canal)}
+  //                   className="mt-3 w-full rounded-full bg-neutral-800 px-5 py-2 text-white hover:bg-[#383838] "
+  //                 >
+  //                   Ver canal 📺
+  //                 </button>
+  //               </div>
+  //             ))}
+  //           </div>
+  //         ) : (
+  //           <div className="flex flex-col h-screen w-full">
+  //             <div className="my-6 w-full aspect-video">
+  //               <iframe
+  //                 id="iframe"
+  //                 src={iframeUrl}
+  //                 className=" w-full h-full rounded shadow-lg"
+  //                 frameBorder={0}
+  //                 allow="autoplay; encrypted-media; picture-in-picture"
+  //                 allowFullScreen
+  //                 sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-presentation"
+  //                 title="Live Video"
+  //               />
+  //             </div>
+
+  //             <div className="relative flex h-4 w-full  border-grid before:absolute before:-left-[100vw] before:h-4 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-black)]/5 dark:before:[--pattern-foreground:var(--color-white)]/5"></div>
+
+  //             {/***CANALES Desktop*/}
+  //             <div className="my-8 flex-1 overflow-y-auto ">
+  //               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+  //                 {canales.map((canal) => (
+  //                   <div
+  //                     key={canal.nombre}
+  //                     className={`flex flex-col justify-between rounded-xl border p-4 shadow-sm transition
+  //   ${
+  //     selectedCanal.nombre === canal.nombre
+  //       ? "bg-neutral-800 border-neutral-600"
+  //       : "border-neutral-800 hover:bg-neutral-900"
+  //   }
+  // `}
+  //                   >
+  //                     <div>
+  //                       <h2 className="text-lg font-semibold text-[#9f9fa9]">
+  //                         {canal.nombre}
+  //                       </h2>
+  //                       <p className="font-mono text-sm text-[oklch(0.552_0.016_285.938)] mt-1">
+  //                         {canal.descripcion}
+  //                       </p>
+  //                     </div>
+  //                     <button
+  //                       aria-label={`Ver canal ${canal.nombre}`}
+  //                       onClick={() => handleClick(canal)}
+  //                       className={`cursor-pointer mt-3 w-full rounded-full px-5 py-2 transition
+  //   ${
+  //     selectedCanal.nombre === canal.nombre
+  //       ? "bg-white text-black"
+  //       : "bg-neutral-800 text-[#9f9fa9] hover:bg-white hover:text-black"
+  //   }
+  // `}
+  //                     >
+  //                       {selectedCanal.nombre === canal.nombre
+  //                         ? "En vivo 🔴"
+  //                         : "Ver canal 📺"}
+  //                     </button>
+  //                   </div>
+  //                 ))}
+  //               </div>
+  //             </div>
+  //           </div>
+  //         )}
+
+  //         {isMobile && (
+  //           <p className="my-4 text-sm text-zinc-500 text-center">
+  //             En móvil, los canales se abren en otra pestaña para mejor
+  //             compatibilidad 📱
+  //           </p>
+  //         )}
+  //       </main>
+  //     </div>
+  //     {/* <ToTopButton /> */}
+  //   </div>
+  // );
 }
