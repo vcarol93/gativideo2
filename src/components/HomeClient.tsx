@@ -149,8 +149,8 @@ export default function HomeClient() {
       descripcion: "Deportes en vivo",
     },
     {
-      nombre: "ESPN 1",
-      url: "https://tv-libre.net/html/fl/?get=RVNQTjJIRA",
+      nombre: "ESPN Premium",
+      url: "https://la14hd.com/1ad80848-c249-459b-a907-dff0a190afb8",
       descripcion: "Deportes en vivo",
     },
     {
