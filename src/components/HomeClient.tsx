@@ -6,169 +6,174 @@ import { useState, useEffect } from "react";
 export default function HomeClient() {
   const canales = [
     {
-      nombre: "Telefe",
-      url: "https://tvlibre-online.com/html/fl/?get=VGVsZWZlSEQ=",
-      descripcion:
-        "Canal generalista con programas en vivo, noticias y entretenimiento.",
+      nombre: "DSport",
+      url: "https://sudamericaplay.sbs/canal_8112/cza_dsports.html",
+      descripcion: "Deportes en vivo",
     },
     {
-      nombre: "El Trece",
-      url: "https://tvlibre-online.com/html/fl/?get=QXJ0ZWFySEQ",
-      descripcion:
-        "El Trece TV Argentina, shows, noticieros y programación familiar.",
-    },
-    {
-      nombre: "El Nueve",
-      url: "https://tvlibre-online.com/html/fl/?get=Q2FuYWw5&lang=1",
-      descripcion: "Canal de TV de Argentina. Noticias y actualidad.",
-    },
-    {
-      nombre: "Telemax",
-      url: "https://tvlibre-online/html/fl/?get=VGVsZW1heA",
-      descripcion: "Es un canal del sistema de cable TeleCentro de Argentina ",
-    },
-    {
-      nombre: "Antena 3",
-      url: "https://tvlibre-online/html/fl/?get=QW50ZW5hXzM=",
-      descripcion: "Canal de televisión generalista español.",
-    },
-    {
-      nombre: "Nat Geo",
-      url: "https://tvlibre-online/html/fl/?get=TmF0R2VvSEQ=",
-      descripcion:
-        "Sobre exploración científica, historia, naturaleza y cultura, entre otros.",
-    },
-    {
-      nombre: "Animal Planet",
-      url: "https://tvlibre-online/html/fl/?get=QW5pbWFsUGxhbmV0",
-      descripcion: "Documentales de vida salvaje y naturaleza.",
-    },
-    {
-      nombre: "Discovery Channel",
-      url: "https://tvlibre-online/html/fl/?get=RGlzY292ZXJ5SEQ=",
-      descripcion: "Documentales",
-    },
-    {
-      nombre: "History Channel",
-      url: "https://tvlibre-online/html/fl/?get=SGlzdG9yeUhE",
-      descripcion: "Documentales",
-    },
-    {
-      nombre: "Cinecanal",
-      url: "https://tvlibre-online/html/fl/?get=Q2luZWNhbmFsSEQ=",
-      descripcion: "Peliculas de estreno y clásicos del cine.",
-    },
-    {
-      nombre: "TNT",
-      url: "https://tvlibre-online/html/fl/?get=VE5UX0hEX0FyZw==",
-      descripcion: "Películas, series.",
-    },
-    {
-      nombre: "Warner Channel",
-      url: "https://tvlibre-online/html/fl/?get=V2FybmVySEQ=",
-      descripcion: "Películas, series.",
-    },
-    {
-      nombre: "Star Channel",
-      url: "https://tvlibre-online/html/fl/?get=Rk9YSEQ=",
-      descripcion: "Películas, series.",
-    },
-    {
-      nombre: "Studio Universal",
-      url: "https://tvlibre-online/html/fl/?get=U3R1ZGlvX1VuaXZlcnNhbA==",
-      descripcion: "Películas, series.",
-    },
-    {
-      nombre: "Sony Channel",
-      url: "https://tvlibre-online/html/fl/?get=U29ueUhE",
-      descripcion: "Películas, series.",
-    },
-    {
-      nombre: "Paramount Network",
-      url: "https://tvlibre-online/html/fl/?get=UGFyYW1vdW50",
-      descripcion: "Películas, series.",
-    },
-    {
-      nombre: "AXN",
-      url: "https://tvlibre-online/html/fl/?get=QVhOSEQ=",
-      descripcion: "Películas, series.",
-    },
-    {
-      nombre: "HBO",
-      url: "https://tvlibre-online/html/fl/?get=SEJPSEQ=",
-      descripcion: "Películas, series.",
-    },
-    {
-      nombre: "HBO 2",
-      url: "https://tvlibre-online/html/fl/?get=SEJPXzI=",
-      descripcion: "Películas, series.",
-    },
-    {
-      nombre: "HBO Plus",
-      url: "https://tvlibre-online/html/fl/?get=SEJPX1BsdXM=",
-      descripcion: "Películas, series.",
-    },
-    {
-      nombre: "Universal Cinema",
-      url: "https://tvlibre-online/html/fl/?get=VW5pdmVyc2FsX0NpbmVtYQ==",
-      descripcion: "Películas, series.",
-    },
-    {
-      nombre: "Cartoon Network",
-      url: "https://tvlibre-online/html/fl/?get=Q2FydG9vbk5ldHdvcms=",
-      descripcion: "Kids y familia.",
-    },
-    {
-      nombre: "Nickelodeon",
-      url: "https://tvlibre-online/html/fl/?get=RGlzY292ZXJ5X0tpZHM=",
-      descripcion: "Kids y familia.",
-    },
-    {
-      nombre: "DreamWorks",
-      url: "https://tvlibre-online/html/fl/?get=RHJlYW13b3Jrcw==",
-      descripcion: "Kids y familia.",
-    },
-    {
-      nombre: "Flow Music",
-      url: "https://tvlibre-online/html/fl/?get=Rmxvd19NdXNpY19YUA==",
-      descripcion: "Canal musical en vivo con videos y conciertos.",
+      nombre: "DSport Latam",
+      url: "https://sudamericaplay.sbs/canal_8112/dsports4541.html",
+      descripcion: "Deportes en vivo",
     },
     {
       nombre: "TyC Sports",
-      url: "https://la14hd.com/vivo/canales.php?stream=tycsports",
+      url: "https://streamtp.sbs/global1.php?stream=tycsports",
       descripcion: "Deportes en vivo",
     },
-    {
-      nombre: "TNT Sports",
-      url: "https://tvlibre-online/html/fl/?get=VE5UX1Nwb3J0c19IRA",
-      descripcion: "Deportes en vivo",
-    },
-    {
-      nombre: "DSports",
-      url: "https://la14hd.com/vivo/canales.php?stream=dsports",
-      descripcion: "Deportes en vivo",
-    },
-    {
-      nombre: "ESPN Premium",
-      url: "https://la14hd.com/1ad80848-c249-459b-a907-dff0a190afb8",
-      descripcion: "Deportes en vivo",
-    },
-    {
-      nombre: "ESPN 3",
-      url: "https://tvlib3.com/html/fl/?get=RVNQTjM",
-      descripcion: "Deportes en vivo",
-    },
-    {
-      nombre: "NBA TV",
-      url: "https://tvlib3.com/html/fl/?get=TkJBX1RW",
-      descripcion:
-        "Canal oficial de la NBA con partidos, resúmenes y análisis.",
-    },
-    {
-      nombre: "Fox Sports 1",
-      url: "https://tvlibre-online/html/fl/?get=Rm94U3BvcnRz",
-      descripcion: "Eventos deportivos, fútbol, Fórmula 1 y más.",
-    },
+
+    // {
+    //   nombre: "El Trece",
+    //   url: "https://tvlibre-online.com/html/fl/?get=QXJ0ZWFySEQ",
+    //   descripcion:
+    //     "El Trece TV Argentina, shows, noticieros y programación familiar.",
+    // },
+    // {
+    //   nombre: "Telemax",
+    //   url: "https://tvlibre-online/html/fl/?get=VGVsZW1heA",
+    //   descripcion: "Es un canal del sistema de cable TeleCentro de Argentina ",
+    // },
+    // {
+    //   nombre: "Antena 3",
+    //   url: "https://tvlibre-online/html/fl/?get=QW50ZW5hXzM=",
+    //   descripcion: "Canal de televisión generalista español.",
+    // },
+    // {
+    //   nombre: "Nat Geo",
+    //   url: "https://tvlibre-online/html/fl/?get=TmF0R2VvSEQ=",
+    //   descripcion:
+    //     "Sobre exploración científica, historia, naturaleza y cultura, entre otros.",
+    // },
+    // {
+    //   nombre: "Animal Planet",
+    //   url: "https://tvlibre-online/html/fl/?get=QW5pbWFsUGxhbmV0",
+    //   descripcion: "Documentales de vida salvaje y naturaleza.",
+    // },
+    // {
+    //   nombre: "Discovery Channel",
+    //   url: "https://tvlibre-online/html/fl/?get=RGlzY292ZXJ5SEQ=",
+    //   descripcion: "Documentales",
+    // },
+    // {
+    //   nombre: "History Channel",
+    //   url: "https://tvlibre-online/html/fl/?get=SGlzdG9yeUhE",
+    //   descripcion: "Documentales",
+    // },
+    // {
+    //   nombre: "Cinecanal",
+    //   url: "https://tvlibre-online/html/fl/?get=Q2luZWNhbmFsSEQ=",
+    //   descripcion: "Peliculas de estreno y clásicos del cine.",
+    // },
+    // {
+    //   nombre: "TNT",
+    //   url: "https://tvlibre-online/html/fl/?get=VE5UX0hEX0FyZw==",
+    //   descripcion: "Películas, series.",
+    // },
+    // {
+    //   nombre: "Warner Channel",
+    //   url: "https://tvlibre-online/html/fl/?get=V2FybmVySEQ=",
+    //   descripcion: "Películas, series.",
+    // },
+    // {
+    //   nombre: "Star Channel",
+    //   url: "https://tvlibre-online/html/fl/?get=Rk9YSEQ=",
+    //   descripcion: "Películas, series.",
+    // },
+    // {
+    //   nombre: "Studio Universal",
+    //   url: "https://tvlibre-online/html/fl/?get=U3R1ZGlvX1VuaXZlcnNhbA==",
+    //   descripcion: "Películas, series.",
+    // },
+    // {
+    //   nombre: "Sony Channel",
+    //   url: "https://tvlibre-online/html/fl/?get=U29ueUhE",
+    //   descripcion: "Películas, series.",
+    // },
+    // {
+    //   nombre: "Paramount Network",
+    //   url: "https://tvlibre-online/html/fl/?get=UGFyYW1vdW50",
+    //   descripcion: "Películas, series.",
+    // },
+    // {
+    //   nombre: "AXN",
+    //   url: "https://tvlibre-online/html/fl/?get=QVhOSEQ=",
+    //   descripcion: "Películas, series.",
+    // },
+    // {
+    //   nombre: "HBO",
+    //   url: "https://tvlibre-online/html/fl/?get=SEJPSEQ=",
+    //   descripcion: "Películas, series.",
+    // },
+    // {
+    //   nombre: "HBO 2",
+    //   url: "https://tvlibre-online/html/fl/?get=SEJPXzI=",
+    //   descripcion: "Películas, series.",
+    // },
+    // {
+    //   nombre: "HBO Plus",
+    //   url: "https://tvlibre-online/html/fl/?get=SEJPX1BsdXM=",
+    //   descripcion: "Películas, series.",
+    // },
+    // {
+    //   nombre: "Universal Cinema",
+    //   url: "https://tvlibre-online/html/fl/?get=VW5pdmVyc2FsX0NpbmVtYQ==",
+    //   descripcion: "Películas, series.",
+    // },
+    // {
+    //   nombre: "Cartoon Network",
+    //   url: "https://tvlibre-online/html/fl/?get=Q2FydG9vbk5ldHdvcms=",
+    //   descripcion: "Kids y familia.",
+    // },
+    // {
+    //   nombre: "Nickelodeon",
+    //   url: "https://tvlibre-online/html/fl/?get=RGlzY292ZXJ5X0tpZHM=",
+    //   descripcion: "Kids y familia.",
+    // },
+    // {
+    //   nombre: "DreamWorks",
+    //   url: "https://tvlibre-online/html/fl/?get=RHJlYW13b3Jrcw==",
+    //   descripcion: "Kids y familia.",
+    // },
+    // {
+    //   nombre: "Flow Music",
+    //   url: "https://tvlibre-online/html/fl/?get=Rmxvd19NdXNpY19YUA==",
+    //   descripcion: "Canal musical en vivo con videos y conciertos.",
+    // },
+    // {
+    //   nombre: "TyC Sports",
+    //   url: "https://la14hd.com/vivo/canales.php?stream=tycsports",
+    //   descripcion: "Deportes en vivo",
+    // },
+    // {
+    //   nombre: "TNT Sports",
+    //   url: "https://tvlibre-online/html/fl/?get=VE5UX1Nwb3J0c19IRA",
+    //   descripcion: "Deportes en vivo",
+    // },
+    // {
+    //   nombre: "DSports",
+    //   url: "https://sudamericaplay.sbs/canal_8112/cza_dsports.html",
+    //   descripcion: "Deportes en vivo",
+    // },
+    // {
+    //   nombre: "ESPN Premium",
+    //   url: "https://la14hd.com/1ad80848-c249-459b-a907-dff0a190afb8",
+    //   descripcion: "Deportes en vivo",
+    // },
+    // {
+    //   nombre: "ESPN 3",
+    //   url: "https://tvlib3.com/html/fl/?get=RVNQTjM",
+    //   descripcion: "Deportes en vivo",
+    // },
+    // {
+    //   nombre: "NBA TV",
+    //   url: "https://tvlib3.com/html/fl/?get=TkJBX1RW",
+    //   descripcion:
+    //     "Canal oficial de la NBA con partidos, resúmenes y análisis.",
+    // },
+    // {
+    //   nombre: "Fox Sports 1",
+    //   url: "https://tvlibre-online/html/fl/?get=Rm94U3BvcnRz",
+    //   descripcion: "Eventos deportivos, fútbol, Fórmula 1 y más.",
+    // },
   ];
 
   const [isMobile, setIsMobile] = useState(false);
